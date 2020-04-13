@@ -1,0 +1,10 @@
+{
+  "name": "MyFirstCustomPackage",
+  "label": "MyFirstCustomPackage",
+  "description": "Provides actions for MyFirstCustomPackage operations.",
+  "group": "",
+  "artifactName": "",
+  "packageVersion": "",
+  "codeVersion": "",
+  "commands": []
+}

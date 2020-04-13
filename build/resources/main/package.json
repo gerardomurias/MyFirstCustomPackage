@@ -1,0 +1,246 @@
+{
+    "name": "GerardoCustomPackage",
+    "label": "GerardoCustomPackage",
+    "description": "Provides actions for GerardoCustomPackage operations.",
+    "group": "com.automationanywhere",
+    "artifactName": "GerardoCustomPackage",
+    "packageVersion": "2.0.0-20200413-150814",
+    "codeVersion": "2.0.0-20200413-150814",
+    "commands": [
+        {
+            "name": "python.commands.closeScript",
+            "label": "[[CloseScript.label]]",
+            "description": "[[CloseScript.description]]",
+            "nodeLabel": "[[CloseScript.node_label]]",
+            "mainClass": "com.automationanywhere.botcommand.demo.CloseScriptCommand",
+            "icon": "closescript.svg",
+            "attributes": [
+                {
+                    "name": "session",
+                    "label": "[[CloseScript.session.label]]",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "Default",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "python.commands.executeFunction",
+            "label": "[[ExecuteFunction.label]]",
+            "description": "[[ExecuteFunction.description]]",
+            "nodeLabel": "[[ExecuteFunction.node_label]]",
+            "mainClass": "com.automationanywhere.botcommand.demo.ExecuteFunctionCommand",
+            "icon": "executescript.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "[[ExecuteFunction.return_label]]",
+            "returnRequired": false,
+            "attributes": [
+                {
+                    "name": "session",
+                    "label": "[[ExecuteFunction.session.label]]",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "Default",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "functionName",
+                    "label": "[[ExecuteFunction.functionName.label]]",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "argument",
+                    "label": "[[ExecuteFunction.argument.label]]",
+                    "description": "[[ExecuteFunction.argument.description]]",
+                    "type": "VARIABLE",
+                    "rules": [
+                        {
+                            "name": "VARIABLE_TYPE",
+                            "value": "ANY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "python.commands.executeScript",
+            "label": "[[ExecuteScript.label]]",
+            "description": "[[ExecuteScript.description]]",
+            "mainClass": "com.automationanywhere.botcommand.demo.ExecuteScriptCommand",
+            "icon": "executescript.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "[[ExecuteScript.return_label]]",
+            "returnRequired": false,
+            "attributes": [
+                {
+                    "name": "session",
+                    "label": "[[ExecuteScript.session.label]]",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "Default",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "FileUtility",
+            "label": "FileUtility",
+            "description": "File Utility",
+            "nodeLabel": "Get Size of {{fileName}}",
+            "mainClass": "com.automationanywhere.botcommand.demo.FileUtilityCommand",
+            "icon": "pkg.svg",
+            "returnType": "STRING",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "Assign the output to variable",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "filePath",
+                    "label": "File Path",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "python.commands.openScript",
+            "label": "[[OpenScript.label]]",
+            "description": "[[OpenScript.description]]",
+            "nodeLabel": "[[OpenScript.node_label]]",
+            "mainClass": "com.automationanywhere.botcommand.demo.OpenScriptCommand",
+            "icon": "openscript.svg",
+            "attributes": [
+                {
+                    "name": "session",
+                    "label": "[[OpenScript.session.label]]",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "Default",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "scriptOption",
+                    "label": "[[OpenScript.scriptOption.label]]",
+                    "type": "RADIO",
+                    "defaultValue": {
+                        "string": "FILE",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        },
+                        {
+                            "name": "CODE_TYPE",
+                            "value": "text/x-python"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "[[OpenScript.import_python_file.label]]",
+                            "value": "FILE",
+                            "attributes": [
+                                {
+                                    "name": "file",
+                                    "label": "[[OpenScript.file.label]]",
+                                    "type": "FILE",
+                                    "rules": [
+                                        {
+                                            "name": "NOT_EMPTY"
+                                        },
+                                        {
+                                            "name": "FILE_REPOSITORY"
+                                        },
+                                        {
+                                            "name": "FILE_EXTENSION",
+                                            "value": ".py"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "label": "[[OpenScript.manual_python_script.label]]",
+                            "value": "SCRIPT",
+                            "attributes": [
+                                {
+                                    "name": "script",
+                                    "label": "[[OpenScript.script.label]]",
+                                    "type": "CODE",
+                                    "rules": [
+                                        {
+                                            "name": "NOT_EMPTY"
+                                        },
+                                        {
+                                            "name": "CODE_TYPE",
+                                            "value": "text/x-python"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "version",
+                    "label": "[[OpenScript.version.label]]",
+                    "type": "RADIO",
+                    "defaultValue": {
+                        "string": "3",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        },
+                        {
+                            "name": "CODE_TYPE",
+                            "value": "text/x-python"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "[[OpenScript.python_version_2.label]]",
+                            "value": "2"
+                        },
+                        {
+                            "label": "[[OpenScript.python_version_3.label]]",
+                            "value": "3"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
