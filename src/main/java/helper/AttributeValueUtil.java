@@ -1,4 +1,4 @@
-package com.automationanywhere.botcommand.demo;
+package helper;
 
 import com.automationanywhere.botcommand.data.Value;
 import com.automationanywhere.botcommand.data.impl.StringValue;

@@ -1,4 +1,4 @@
-package com.automationanywhere.botcommand.demo;
+package commands;
 
 import com.automationanywhere.bot.service.SupportedLanguage;
 import com.automationanywhere.botcommand.data.Value;
@@ -10,13 +10,15 @@ import com.automationanywhere.commandsdk.annotations.rules.NotEmpty;
 import com.automationanywhere.commandsdk.annotations.rules.RepositoryFile;
 import com.automationanywhere.commandsdk.model.AttributeType;
 import com.automationanywhere.commandsdk.model.DataType;
-import com.automationanywhere.botcommand.demo.AttributeConstant;
-import com.automationanywhere.botcommand.demo.AttributeValueUtil;
+import helper.AttributeConstant;
+import helper.AttributeValueUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Map;
 import java.util.UUID;
-import static com.automationanywhere.botcommand.demo.Constants.*;
+import commands.Constants.*;
+
+import static commands.Constants.*;
 
 
 /**
@@ -61,6 +63,8 @@ public class OpenScript {
 	
 	@com.automationanywhere.commandsdk.annotations.GlobalSessionContext
 	private com.automationanywhere.bot.service.GlobalSessionContext globalSessionContext;
+
+	private AttributeValueUtil _attributeValueUtil = new AttributeValueUtil();
 
 	@Execute
 	public void open(
@@ -143,6 +147,10 @@ public class OpenScript {
 
 	public void setSessionMap(Map<String, Object> sessionMap) {
 		this.sessionMap = sessionMap;
+	}
+
+	public void setAttributeValueUtil(AttributeValueUtil attributeValueUtil){
+		_attributeValueUtil = attributeValueUtil;
 	}
 
 	public void setGlobalSessionContext(com.automationanywhere.bot.service.GlobalSessionContext globalSessionContext) {

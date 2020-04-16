@@ -1,11 +1,9 @@
-package com.automationanywhere.botcommand.demo.test;
-
 import com.automationanywhere.bot.service.ExternalEnvironment;
 import com.automationanywhere.bot.service.GlobalSessionContext;
 import com.automationanywhere.botcommand.data.Value;
 import com.automationanywhere.botcommand.data.impl.StringValue;
-import com.automationanywhere.botcommand.demo.AttributeValueUtil;
-import com.automationanywhere.botcommand.demo.OpenScript;
+import helper.AttributeValueUtil;
+import commands.OpenScript;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.util.HashMap;
@@ -14,9 +12,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-
 @Test(enabled=true)
-public class OpenScriptTest {
+public class ExecuteInlinePythonTest {
 
     @DataProvider(name="testValues")
     public Object[][] testValues() {
@@ -47,7 +44,7 @@ public class OpenScriptTest {
         systemUnderTest.setParameters(parameters);
 
         AttributeValueUtil attributeValueUtil = new AttributeValueUtil();
-        //systemUnderTest.setAttributeValueUtil(attributeValueUtil);
+        systemUnderTest.setAttributeValueUtil(attributeValueUtil);
         /*AttributeValueUtil attributeValueUtilMock = mock(AttributeValueUtil.class);
         when(attributeValueUtilMock.getStringValue(parameters, "uuid"))
                 .thenReturn("defa3a1b-f3b2-4961-a88e-378aef143965");
@@ -64,7 +61,7 @@ public class OpenScriptTest {
 
 
         // Act
-        //systemUnderTest.open(pythonSession, scriptOption, pythonVersion);
+        systemUnderTest.open(pythonSession, scriptOption, pythonVersion);
 
 
         // Assert

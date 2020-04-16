@@ -1,0 +1,10 @@
+{
+  "name": "GerardoCustomPackage",
+  "label": "GerardoCustomPackage",
+  "description": "Provides actions for GerardoCustomPackage operations.",
+  "group": "",
+  "artifactName": "",
+  "packageVersion": "",
+  "codeVersion": "",
+  "commands": []
+}

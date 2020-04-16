@@ -1,4 +1,4 @@
-package com.automationanywhere.botcommand.demo;
+package commands;
 
 import com.automationanywhere.botcommand.exception.BotCommandException;
 import com.automationanywhere.commandsdk.annotations.*;

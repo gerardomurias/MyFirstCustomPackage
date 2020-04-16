@@ -1,4 +1,4 @@
-package com.automationanywhere.botcommand.demo;
+package commands;
 
 import static com.automationanywhere.commandsdk.model.AttributeType.TEXT;
 import static com.automationanywhere.commandsdk.model.DataType.STRING;

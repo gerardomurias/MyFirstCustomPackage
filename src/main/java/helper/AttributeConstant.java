@@ -1,4 +1,4 @@
-package com.automationanywhere.botcommand.demo;
+package helper;
 
 public final class AttributeConstant {
 	public static final String ID           = "uuid";

@@ -1,4 +1,4 @@
-package com.automationanywhere.botcommand.demo;
+package commands;
 
 import com.automationanywhere.commandsdk.i18n.Messages;
 import com.automationanywhere.commandsdk.i18n.MessagesFactory;

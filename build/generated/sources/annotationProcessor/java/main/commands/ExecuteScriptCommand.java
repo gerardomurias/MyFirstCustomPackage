@@ -1,4 +1,4 @@
-package com.automationanywhere.botcommand.demo;
+package commands;
 
 import com.automationanywhere.bot.service.GlobalSessionContext;
 import com.automationanywhere.botcommand.BotCommand;

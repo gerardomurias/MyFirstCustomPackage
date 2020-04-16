@@ -1,4 +1,4 @@
-package com.automationanywhere.botcommand.demo;
+package helper;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
