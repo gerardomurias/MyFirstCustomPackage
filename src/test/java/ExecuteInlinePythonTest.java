@@ -2,6 +2,7 @@ import com.automationanywhere.bot.service.ExternalEnvironment;
 import com.automationanywhere.bot.service.GlobalSessionContext;
 import com.automationanywhere.botcommand.data.Value;
 import com.automationanywhere.botcommand.data.impl.StringValue;
+import commands.ExecuteFunction;
 import helper.AttributeValueUtil;
 import commands.OpenScript;
 import org.testng.annotations.DataProvider;
@@ -22,10 +23,12 @@ public class ExecuteInlinePythonTest {
         };
     }
 
+    private String _expectedResult = "expectedResult";
+
     private GlobalSessionContext getGlobalSessionContextMock(){
         ExternalEnvironment externalEnvironment = mock(ExternalEnvironment.class);
         doNothing().when(externalEnvironment).openFunction(any(), any());
-        when(externalEnvironment.callFunction(any(), any())).thenReturn("result");
+        when(externalEnvironment.callFunction(any(), any())).thenReturn(_expectedResult);
         doNothing().when(externalEnvironment).closeFunction(any());
 
         GlobalSessionContext globalSessionContext = mock(GlobalSessionContext.class);
@@ -37,34 +40,34 @@ public class ExecuteInlinePythonTest {
     public void MyFirstTest(String pythonSession, String scriptOption, String pythonVersion){
 
         // Arrange
-        OpenScript systemUnderTest = new OpenScript();
+        OpenScript openScript = new OpenScript();
+        ExecuteFunction executeFunction = new ExecuteFunction();
 
         Map<String, Value> parameters = new HashMap<String, Value>();
         parameters.put("uuid", new StringValue("defa3a1b-f3b2-4961-a88e-378aef143965"));
-        systemUnderTest.setParameters(parameters);
+        openScript.setParameters(parameters);
 
         AttributeValueUtil attributeValueUtil = new AttributeValueUtil();
-        systemUnderTest.setAttributeValueUtil(attributeValueUtil);
-        /*AttributeValueUtil attributeValueUtilMock = mock(AttributeValueUtil.class);
-        when(attributeValueUtilMock.getStringValue(parameters, "uuid"))
-                .thenReturn("defa3a1b-f3b2-4961-a88e-378aef143965");
-        systemUnderTest.setAttributeValueUtil(attributeValueUtilMock);*/
+        openScript.setAttributeValueUtil(attributeValueUtil);
 
-        systemUnderTest.setScript("print \"hello\"");
+        openScript.setScript("def hello_world():\nprint \"hello\"");
 
         GlobalSessionContext globalSessionContextMock = getGlobalSessionContextMock();
-        systemUnderTest.setGlobalSessionContext(globalSessionContextMock);
+        openScript.setGlobalSessionContext(globalSessionContextMock);
+        executeFunction.setGlobalSessionContext(globalSessionContextMock);
 
         HashMap<String,Object> mySession = new HashMap<String,Object>();
         mySession.put("Default", null);
-        systemUnderTest.setSessionMap(mySession);
+        openScript.setSessionMap(mySession);
+        executeFunction.setSessionMap(mySession);
 
 
         // Act
-        systemUnderTest.open(pythonSession, scriptOption, pythonVersion);
+        openScript.open(pythonSession, scriptOption, pythonVersion);
+        Value returnedResult = executeFunction.execute(pythonSession, "hello_world", null);
 
 
         // Assert
-        assertEquals(1,1);
+        assertEquals(returnedResult.toString() , _expectedResult);
     }
 }
